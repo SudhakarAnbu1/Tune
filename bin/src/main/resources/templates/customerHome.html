@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet"th:href="@{/css/customerHome.css}">
+</head>
+<body>
+
+	<div th:if="${isPremium}" class="premium">
+	
+	<h1>Welcome to customer Home page : </h1><br>
+		<h3>Songs</h3>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Artist</th>
+					<th>Genre</th>
+					<th>Play</th>
+				</tr>
+			</thead>
+			
+			
+			<tbody>
+				<tr th:each="songs : ${songs}">
+					<td th:text="${songs.name}"></td>
+					<td th:text="${songs.artist}"></td>
+					<td th:text="${songs.genre}"></td>
+					<td>
+						<audio controls="controls">
+							<source th:src="${songs.link}" type="audio/mpeg"/>
+						</audio>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+	
+	
+	
+	<div th:unless="${isPremium}" class="non-premium">
+	
+		<form action="pay" method="get">
+		<h1>Welcome to Non-Premium Customer : </h1>
+		<input type="submit" value="Get Premium">
+		</form>
+		<br><a href="logout"><button>LOGOUT</button></a>
+	
+	</div>
+	
+
+		
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<link rel="stylesheet" th:href="@{/css/addSongs.css}">
+
+</head>
+<body>
+	<form action="addSongs" method="post">
+	<div>
+	<h1>Add New Songs : </h1><br>
+	<label>Song Name : </label>
+	<input type="text" placeholder="Song Name" name="name" required="required"><br><br>
+	<label>Artist Name : </label>
+	<input type="text" placeholder="Artist Name" name="artist" required="required"><br><br>
+	<label>Genre Type : </label>
+	<input type="text" placeholder="Genre Type" name="genre" required="required"><br><br>
+	<label>Song Link : </label>
+	<input type="text" placeholder="Song Link" name="link" required="required"><br><br>
+	<input type="submit" value="ADD SONGS">	
+	</div>
+	
+	</form>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/displaySongs.css}">
+</head>
+<body>
+	
+	<h1>All Songs : </h1>
+	<div>
+		<h3>Songs</h3>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Artist</th>
+					<th>Genre</th>
+					<th>Play</th>
+				</tr>
+			</thead>
+			
+			
+			<tbody>
+				<tr th:each="songs : ${songs}">
+					<td th:text="${songs.name}"></td>
+					<td th:text="${songs.artist}"></td>
+					<td th:text="${songs.genre}"></td>
+					<td>
+						<audio controls="controls">
+							<source th:src="${songs.link}" type="audio/mpeg"/>
+						</audio>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+</body>
+</html>

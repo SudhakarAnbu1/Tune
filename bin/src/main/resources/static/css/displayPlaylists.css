@@ -1,0 +1,17 @@
+@charset "ISO-8859-1";
+body {
+		background-color: #408080;		
+	 }
+	 
+div {
+	
+	
+	background-color: #004080;
+	justify-content: center;
+	height: auto;
+	width: 600px;
+}
+table {
+	background-color: #8080ff;
+	margin-left: 10%
+}

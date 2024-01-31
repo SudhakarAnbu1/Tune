@@ -1,0 +1,14 @@
+@charset "ISO-8859-1";
+body {
+		background-color: #408080;	
+		justify-content: center;	
+}
+
+form {
+	height:auto;
+	width:300px;
+	text-align: inherit;
+	background-color: #004040;
+	
+	
+}

@@ -1,17 +1,56 @@
-@charset "ISO-8859-1";
-body {
-		background-color: #408080;		
-	 }
-	 
-div {
-	
-	text-align: center;
-	background-color: #004080;
-	justify-content: center;
-	height: auto;
-	width: 600px;
+/* Reset some default styles */
+body, h1, h3, table, th, td, audio {
+    margin: 0;
+    padding: 0;
 }
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    background-image: url('/images/displaySongs.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+h1 {
+    color: #333;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+h3 {
+    margin-bottom: 10px;
+}
+
 table {
-	background-color: #8080ff;
-	margin-left: 20px;
+    width: 80%; /* Adjust the width as needed */
+    border-collapse: collapse;
+  
+    margin-top: 10px;
+    background-repeat: no-repeat;
+     background-size: cover;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: rgb(192, 192, 192);
+    color: white;
+}
+
+audio {
+    width: 100%;
+    margin-top: 5px;
 }

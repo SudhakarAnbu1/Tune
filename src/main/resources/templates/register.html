@@ -5,8 +5,8 @@
 <title>Insert title here</title>
 <link rel="stylesheet" th:href="@{/css/register.css}">
 </head>
-<body>
-<h1>Welcome to Register : </h1>
+<body style="background-image: url(/images/register.jpeg);">
+
 <form action="/register" method="post">
 <h1>REGISTER : </h1>
 		 <label>User Name : </label>
@@ -28,8 +28,8 @@
 		 <input type="radio" name="role" value="customer">Customer<br> <br>
 		 
 		  <label>Address : </label> 
-		 <textarea name="address" placeholder="ENTER ADDRESS" required="required"></textarea><br> <br>
-			 <p>Do you want to <a href="login">LOGIN?</a></p><br>
+		 <textarea name="address" placeholder="ENTER ADDRESS" required="required"></textarea>
+			 <p>Do you want to <a href="login">LOGIN?</a></p>
 		 <input type="submit" value="Register">
 		 </form>
 </body>

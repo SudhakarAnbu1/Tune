@@ -4,8 +4,21 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <link rel="stylesheet"th:href="@{/css/customerHome.css}">
+
+	<style>
+	
+	.button
+	{
+		background-color: #808080;
+		input[type="submit"]:hover {
+	    background-color: rgb(64, 128, 128);
+									}
+	}
+	
+	</style>
+
 </head>
-<body>
+<body style="background-image: url('/images/customerHome.jpeg');">
 
 	<div th:if="${isPremium}" class="premium">
 	
@@ -43,9 +56,9 @@
 	
 		<form action="pay" method="get">
 		<h1>Welcome to Non-Premium Customer : </h1>
-		<input type="submit" value="Get Premium">
+		<input type="submit" value="Get Premium" class="button">
 		</form>
-		<br><a href="logout"><button>LOGOUT</button></a>
+		<br><a href="logout"><button class="button">LOGOUT</button></a>
 	
 	</div>
 	

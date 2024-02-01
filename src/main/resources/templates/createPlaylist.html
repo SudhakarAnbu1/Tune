@@ -5,12 +5,12 @@
 <title>Insert title here</title>
 <link rel="stylesheet" th:href="@{/css/createPlaylist.css}">
 </head>
-<body>
-<h1>Create PlayList : </h1>
+<body style="background-image: url('/images/createPlaylist.jpeg');">
+
 	<form action="addPlaylist" method="post">
-	<h1>PlayList : </h1>
+	<h1>Create PlayList : </h1>
 		<label>PlayList Name : </label>
-		<input type="text"placeholder="Enter PlayList Name" name="name"><br><br>
+		<input type="text"placeholder="Enter PlayList Name" name="name" required="required"><br><br>
 		
 		<div th:each="song : ${songs}">
 		

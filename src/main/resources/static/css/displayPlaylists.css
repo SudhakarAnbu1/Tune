@@ -1,17 +1,55 @@
-@charset "ISO-8859-1";
 body {
-		background-color: #408080;		
-	 }
-	 
-div {
-	
-	
-	background-color: #004080;
-	justify-content: center;
-	height: auto;
-	width: 600px;
+    font-family: Arial, sans-serif;
+    background-color: #c0c0c0;
+    padding: 20px;
 }
+
+h1 {
+    color: #333;
+}
+
+div {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
 table {
-	background-color: #8080ff;
-	margin-left: 10%
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #808080;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #808080;
+    color: #fff;
+}
+
+ol {
+    padding: 0;
+    list-style-type: none;
+}
+
+li {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+audio {
+    width: 100%;
+    margin-top: 10px;
+}
+
+hr {
+    margin-top: 10px;
+    margin-bottom: 20px;
 }

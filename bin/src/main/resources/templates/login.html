@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.com">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/login.css}">
+</head>
+<body style="background-image: url(/images/login.jpg);">
+	<form action="/validate" method="post">
+	<h1>Welcome to Login Page :</h1>
+	<div>
+	<h1>LOGIN :</h1>
+	 <label>Email : </label>
+		 <input type="email" placeholder="ENTER EMAIL" name="email" required="required"><br><br>
+		 
+		 <label>Password : </label> 
+		 <input type="password"placeholder="ENTER PASSWORD" name="password" required="required"><br><br>
+		 <p>Forgot <a href="/forgotPassword">password?</a> </p><br>
+		 <p>Do you want to <a href="/register">Register?</a> </p><br>
+		 <input type="submit" value="LOGIN">
+		 </div>
+		 </form>
+	
+			 
+
+</body>
+</html>

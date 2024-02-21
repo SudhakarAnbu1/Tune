@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.com">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/register.css}">
+</head>
+<body style="background-image: url(/images/register.jpeg);">
+
+<form action="/register" method="post">
+<h1>REGISTER : </h1>
+		 <label>User Name : </label>
+		 <input type="text"placeholder="ENTER NAME" name="name" required="required"><br> <br> 
+		 
+		 <label>Email : </label>
+		 <input type="email" placeholder="ENTER EMAIL" name="email" required="required"><br><br>
+		 
+		 <label>Password : </label> 
+		 <input type="password"placeholder="ENTER PASSWORD" name="password" required="required"><br> <br>
+		 
+		  <label>Gender : </label>
+		  <input type="radio" name="gender" value="male">Male
+		  <input type="radio" name="gender" value="female">FeMale
+		  <input type="radio" name="gender" value="others">Others<br> <br>
+		  
+		 <label>Role : </label>
+		 <input type="radio" name="role" value="admin">Admin
+		 <input type="radio" name="role" value="customer">Customer<br> <br>
+		 
+		  <label>Address : </label> 
+		 <textarea name="address" placeholder="ENTER ADDRESS" required="required"></textarea>
+			 <p>Do you want to <a href="login">LOGIN?</a></p>
+		 <input type="submit" value="Register">
+		 </form>
+</body>
+</html>

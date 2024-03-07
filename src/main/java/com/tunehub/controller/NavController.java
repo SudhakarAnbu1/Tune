@@ -26,4 +26,9 @@ public class NavController
 	{
 		return "forgotPassword";
 	}
+	@GetMapping("/deleteCustomer")
+	public String deleteCustomer()
+	{
+		return "deleteCustomer";
+	}
 }

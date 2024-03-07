@@ -11,5 +11,6 @@ public interface UsersService
 	public Users getUser(String email);
 	public void updateuser(Users user);
 	public void updatePassword(String email,String password);
+	public String deleteCustomer(String email);
 	
 }

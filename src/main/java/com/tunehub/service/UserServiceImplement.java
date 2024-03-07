@@ -63,5 +63,11 @@ public class UserServiceImplement implements UsersService
 		
 		
 	}
+	@Override
+	public String deleteCustomer(String email) {
+		Users user=repos.findByEmail(email);
+		repos.delete(user);
+		return "Customer is deleted Sucessfully";
+	}
 
 }

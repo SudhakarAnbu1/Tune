@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.com">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/deleteCustomer.css}">
+</head>
+<body>
+	<form action="deleteCustomer" method="post">
+	<h1>Delete Customer User : </h1>
+		<label>Email : </label><input type="email" name="email" placeholder="Enter E-mail"><br><br>
+		<input type="submit" value="Terminate User">
+	</form>
+</body>
+</html>

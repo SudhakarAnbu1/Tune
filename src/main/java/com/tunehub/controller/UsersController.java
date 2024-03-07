@@ -85,6 +85,13 @@ public class UsersController
 			return "forgotPassword";
 		}
 	}
+	@PostMapping("/deleteCustomer")
+	public String deleteCustomer(@RequestParam("email")String email)
+	{
+		service.deleteCustomer(email);
+		return "adminHome";
+		
+	}
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();

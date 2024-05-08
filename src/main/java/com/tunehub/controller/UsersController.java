@@ -22,10 +22,10 @@ public class UsersController
 {
 	@Autowired
 	UsersService service;
-	
+
 	@Autowired
 	SongsService songService;
-	
+
 	@PostMapping("/register")
 	public String addUsers(@ModelAttribute Users user)
 	{
@@ -33,44 +33,47 @@ public class UsersController
 		if(userStatus==false)
 		{
 			service.addUsers(user);
-			System.out.println("User added");
-			
+			return "login";
+
 		}
 		else
 		{
-			System.out.println("User already exist");
+			return "userExist";
 		}
-		return "home";	
 	}
 	@PostMapping("/validate")
 	public String validate(@RequestParam("email") String email,@RequestParam("password") String password, HttpSession session,Model model)
 	{
-		
-	
-		
-		if(service.validate(email, password)==true)
+		if(service.checkLoginUser(email)==true)
 		{
-			session.setAttribute("email", email);
-			if(service.getRole(email).equals("admin"))
+			if(service.validate(email, password)==true)
 			{
-			return "adminHome";
+				session.setAttribute("email", email);
+				if(service.getRole(email).equals("admin"))
+				{
+					return "adminHome";
+				}
+				else
+				{
+					Users user=service.getUser(email);
+					boolean userStatus=user.isPremium();
+
+					List<Songs> viewSongs=songService.viewAllSongs();
+					model.addAttribute("songs", viewSongs);
+
+					model.addAttribute("isPremium", userStatus);
+					return "customerHome";
+				}
 			}
-			else
-			{
-				Users user=service.getUser(email);
-				boolean userStatus=user.isPremium();
-				
-				List<Songs> viewSongs=songService.viewAllSongs();
-				model.addAttribute("songs", viewSongs);
-				
-				model.addAttribute("isPremium", userStatus);
-				return "customerHome";
-			}
-		}
 		else
 		{
 			return "login";
-		}	
+		}
+		}
+		else
+		{
+			return "userNotFound";
+		}
 	}
 	@PostMapping("/generatePassword")
 	public String generatePassword(@RequestParam("email")String email,@RequestParam("newPassword")String newPassword,@RequestParam("confirmPassword")String confirmPassword)
@@ -90,12 +93,12 @@ public class UsersController
 	{
 		service.deleteCustomer(email);
 		return "adminHome";
-		
+
 	}
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "login";
 	}
-	
+
 }

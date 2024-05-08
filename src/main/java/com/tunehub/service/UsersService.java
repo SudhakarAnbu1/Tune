@@ -12,5 +12,6 @@ public interface UsersService
 	public void updateuser(Users user);
 	public void updatePassword(String email,String password);
 	public String deleteCustomer(String email);
+	public boolean checkLoginUser(String email);
 	
 }

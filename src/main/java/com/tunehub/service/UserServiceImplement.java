@@ -19,7 +19,7 @@ public class UserServiceImplement implements UsersService
 	public boolean emailExists(String email) {
 		if(repos.findByEmail(email)==null)
 		{
-		return false;
+			return false;
 		}
 		else
 		{
@@ -53,21 +53,41 @@ public class UserServiceImplement implements UsersService
 	public void updateuser(Users user) {
 		// TODO Auto-generated method stub
 		repos.save(user);
-		
+
 	}
 	@Override
 	public void updatePassword(String email, String newPassword) {
 		Users user=repos.findByEmail(email);
 		user.setPassword(newPassword);
 		repos.save(user);
-		
-		
+
+
 	}
 	@Override
 	public String deleteCustomer(String email) {
 		Users user=repos.findByEmail(email);
-		repos.delete(user);
-		return "Customer is deleted Sucessfully";
+		if(user.getRole().equals("customer"))
+		{
+			repos.delete(user);
+			return "Customer is deleted Sucessfully";
+		}
+		else
+		{
+			return "This is a admin user";
+		}
+	}
+	@Override
+	public boolean checkLoginUser(String email)
+	{
+	;
+		if(repos.findByEmail(email)==null)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
 	}
 
 }

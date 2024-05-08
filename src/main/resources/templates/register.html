@@ -19,7 +19,7 @@
 		 <input type="password"placeholder="ENTER PASSWORD" name="password" required="required" id="password">
 		 <input type="checkbox" onchange="passwordVisibility()">Show Password
 		 <br> <br>
-		 
+		 00 
 		  <label>Gender : </label>
 		  <input type="radio" name="gender" value="male">Male
 		  <input type="radio" name="gender" value="female">FeMale
@@ -32,7 +32,7 @@
 		  <label>Address : </label> 
 		 <textarea name="address" placeholder="ENTER ADDRESS" required="required"></textarea>
 			 <p>Do you want to <a href="login">LOGIN?</a></p>
-		 <input type="submit" value="Register">
+		 <input type="submit" onclick="registeralert()" value="Register">
 		 </form>
 		 <script type="text/javascript">
 		 	function passwordVisibility()
@@ -46,6 +46,10 @@
 		 		{
 		 			password.type="password";
 		 		}
+		 	}
+		 	function registeralert()
+		 	{
+		 		alert("Registeration Sucessfully........");
 		 	}
 		 </script>
 </body>

@@ -1,15 +1,23 @@
 package com.tunehub.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import com.tunehub.entity.Users;
 import com.tunehub.repository.UsersRepository;
+
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
 @Service
 public class UserServiceImplement implements UsersService
 {
 	@Autowired
 	UsersRepository repos;
+	
+	JavaMailSender javamailsender;
+	
 	@Override
 	public String addUsers(Users user) {
 		repos.save(user);
@@ -56,11 +64,23 @@ public class UserServiceImplement implements UsersService
 
 	}
 	@Override
-	public void updatePassword(String email, String newPassword) {
+	public void generateOTP(String email) {
 		Users user=repos.findByEmail(email);
-		user.setPassword(newPassword);
-		repos.save(user);
-
+//		MimeMessage mimemessage=javamailsender.createMimeMessage();
+//		MimeMessageHelper helper=new MimeMessageHelper(mimemessage,"utf-8");
+//		try
+//		{
+//			helper.setText(body,true);
+//			helper.setTo(sentTo);
+//			helper.setSubject(subject);
+//			helper.setFrom("sudhakar2001dpi@gmail.com");
+//			javamailsender.send(mimemessage);
+//		} 
+//		catch (MessagingException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
 
 	}
 	@Override

@@ -75,18 +75,12 @@ public class UsersController
 			return "userNotFound";
 		}
 	}
-	@PostMapping("/generatePassword")
-	public String generatePassword(@RequestParam("email")String email,@RequestParam("newPassword")String newPassword,@RequestParam("confirmPassword")String confirmPassword)
+	@PostMapping("/generateOTP")
+	public String generatePassword(@RequestParam("email")String email)
 	{
-		if(newPassword.equals(confirmPassword))
-		{
-			service.updatePassword(email,newPassword);
-			return "login";
-		}
-		else
-		{
-			return "forgotPassword";
-		}
+		
+		return email;
+		
 	}
 	@PostMapping("/deleteCustomer")
 	public String deleteCustomer(@RequestParam("email")String email)

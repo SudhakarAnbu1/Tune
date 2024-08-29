@@ -18,12 +18,13 @@ public class Users
 	String role;
 	String address;
 	boolean isPremium;
+	int otp;
 	public Users() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public Users(int id, String name, String email, String password, String gender, String role, String address,
-			boolean isPremium) {
+			boolean isPremium, int otp) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -33,6 +34,7 @@ public class Users
 		this.role = role;
 		this.address = address;
 		this.isPremium = isPremium;
+		this.otp = otp;
 	}
 	public int getId() {
 		return id;
@@ -82,10 +84,17 @@ public class Users
 	public void setPremium(boolean isPremium) {
 		this.isPremium = isPremium;
 	}
+	public int getOtp() {
+		return otp;
+	}
+	public void setOtp(int otp) {
+		this.otp = otp;
+	}
 	@Override
 	public String toString() {
 		return "Users [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", gender="
-				+ gender + ", role=" + role + ", address=" + address + ", isPremium=" + isPremium + "]";
+				+ gender + ", role=" + role + ", address=" + address + ", isPremium=" + isPremium + ", otp=" + otp
+				+ "]";
 	}
 	
 }

@@ -1,5 +1,7 @@
 package com.tunehub.service;
 
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -15,9 +17,10 @@ public class UserServiceImplement implements UsersService
 {
 	@Autowired
 	UsersRepository repos;
-	
+
+	@Autowired
 	JavaMailSender javamailsender;
-	
+
 	@Override
 	public String addUsers(Users user) {
 		repos.save(user);
@@ -64,23 +67,77 @@ public class UserServiceImplement implements UsersService
 
 	}
 	@Override
-	public void generateOTP(String email) {
+	public boolean generateOTP(String email) {
 		Users user=repos.findByEmail(email);
-//		MimeMessage mimemessage=javamailsender.createMimeMessage();
-//		MimeMessageHelper helper=new MimeMessageHelper(mimemessage,"utf-8");
-//		try
-//		{
-//			helper.setText(body,true);
-//			helper.setTo(sentTo);
-//			helper.setSubject(subject);
-//			helper.setFrom("sudhakar2001dpi@gmail.com");
-//			javamailsender.send(mimemessage);
-//		} 
-//		catch (MessagingException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
+		if(user==null)
+		{
+			return false;
+		}
+		else
+		{
+
+		int otp=user.getOtp();
+		//for generating the random nummbers for the otp
+		Random random=new Random();
+		int num=random.nextInt(20);
+
+		num=num*1000+num;
+
+		user.setOtp(num);
+
+		repos.save(user);
+
+
+		MimeMessage mimemessage=javamailsender.createMimeMessage();
+		MimeMessageHelper helper=new MimeMessageHelper(mimemessage,"utf-8");
+		try
+		{
+			helper.setText("Hi "+user.getName()+"," +" use this "+num+" to change Password, Do Not Share the OTP anyone",true);
+			helper.setTo(user.getEmail());
+			helper.setSubject("OTP for Updating Password");
+			helper.setFrom("sudhakar2001dpi@gmail.com");
+			javamailsender.send(mimemessage);
+		} 
+		catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return true;
+		}
+
+
+	}
+	@Override
+	public boolean updatePassword(String email, String password, int otp) {
+		// TODO Auto-generated method stub
+		Users user=repos.findByEmail(email);
+		if(user!=null)
+		{
+			if(user.getOtp()==otp)
+			{
+				String pass=user.getPassword();
+				pass=password;
+				repos.save(user);
+
+
+				//after updating the password change some different otp for security
+				int changeotp=user.getOtp();
+				//for generating the random nummbers for the otp
+				Random random=new Random();
+				int num=random.nextInt(34);
+
+				num=num*1000+num;
+
+				user.setOtp(num);
+
+				repos.save(user);
+			}
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 
 	}
 	@Override
@@ -99,7 +156,7 @@ public class UserServiceImplement implements UsersService
 	@Override
 	public boolean checkLoginUser(String email)
 	{
-	;
+		;
 		if(repos.findByEmail(email)==null)
 		{
 			return false;
@@ -109,5 +166,6 @@ public class UserServiceImplement implements UsersService
 			return true;
 		}
 	}
+
 
 }

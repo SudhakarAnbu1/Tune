@@ -10,7 +10,8 @@ public interface UsersService
 	public String getRole(String email);
 	public Users getUser(String email);
 	public void updateuser(Users user);
-	public void generateOTP(String email);
+	public boolean updatePassword(String email,String password,int otp);
+	public boolean generateOTP(String email);
 	public String deleteCustomer(String email);
 	public boolean checkLoginUser(String email);
 	

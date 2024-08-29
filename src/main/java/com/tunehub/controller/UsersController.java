@@ -78,10 +78,32 @@ public class UsersController
 	@PostMapping("/generateOTP")
 	public String generatePassword(@RequestParam("email")String email)
 	{
-		
-		return email;
+		boolean userCheck=service.generateOTP(email);
+		if(userCheck==true)
+		{
+		return "changePassword";
+		}
+		else
+		{
+			return "userNotFound";
+		}
 		
 	}
+	@PostMapping("/updatePassword")
+	public String updatePassword(@RequestParam("email")String email,@RequestParam("password")String password, @RequestParam("otp")int otp)
+	{
+		boolean checkUser=service.updatePassword(email, password, otp);
+		if(checkUser==false)
+		{
+			return "userNotFound";
+		}
+		else
+		{
+			return "login";
+		}
+		
+	}
+	
 	@PostMapping("/deleteCustomer")
 	public String deleteCustomer(@RequestParam("email")String email)
 	{

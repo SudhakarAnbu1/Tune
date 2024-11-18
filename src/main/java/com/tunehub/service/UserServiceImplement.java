@@ -116,7 +116,8 @@ public class UserServiceImplement implements UsersService
 			if(user.getOtp()==otp)
 			{
 				String pass=user.getPassword();
-				pass=password;
+				user.setPassword(password);
+				
 				repos.save(user);
 
 
